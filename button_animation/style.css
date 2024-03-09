@@ -1,0 +1,79 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: gray;
+}
+
+
+button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+    border: none;
+    width: 5rem;
+    margin: 1rem;
+}
+
+button::before {
+    content: "";
+    background: red;
+    height: 2px;
+    width: 0;
+    display: block;
+}
+
+button::after {
+    content: "";
+    background: red;
+    height: 2px;
+    display: block;
+    width: 0;
+}
+
+button:hover::before {
+    animation: increaseWidth 0.6s forwards linear;
+}
+
+button:hover::after {
+    animation: increaseWidth 0.6s forwards linear;
+}
+
+@keyframes increaseWidth {
+    from{width: 0;}
+    to{width: 5rem;}
+}
+
+
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+div {
+    background-color: black;
+    width: 3rem;
+    height: 5rem;
+    margin: 1rem;
+    position: relative;
+}
+
+div::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgb(255,0,0);
+    background: linear-gradient(var(--gradient-angle), rgba(255,0,0,1) 0%, rgba(0,255,60,1) 100%);
+    animation: rotation 5s linear infinite;
+}
+div::after {
+    filter: blur(10px);
+}
+
+@keyframes rotation {
+    0%{--gradient-angle: 0deg;}
+    100%{--gradient-angle: 360deg;}
+}

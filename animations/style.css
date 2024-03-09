@@ -1,0 +1,86 @@
+/* Elements to animate */
+
+#red_block {
+    width: 14rem;
+    height: 10rem;
+    background-color: red;
+    margin-bottom: 1rem;
+    top: 0;
+
+    /*                    fill mode: where it is at end of animation */
+    animation: goRight 3s forwards, jump 1s 0.4s ease;
+}
+
+#green_block {
+    width: 14rem;
+    height: 10rem;
+    background-color: green;
+    margin-bottom: 1rem;
+    
+    animation-name: goRight;
+    animation-duration: 3s;
+    /* make object tp back to where it came from at end of animation */
+    animation-fill-mode: none;
+    /* delay animation */
+    animation-delay: 0.2s;
+}
+
+#yellow_block {
+    width: 14rem;
+    height: 10rem;
+    background-color: yellow;
+    margin-bottom: 1rem;
+    
+    animation-name: flyby;
+    animation-duration: 3s;
+    /* loop for animation */
+    animation-iteration-count: infinite;
+    /* stop smoothness (start slow, speed up in middle, end slow) */
+    animation-timing-function: linear; /* ease = default, linear = constant speed, ease-in = start slow, ease-out = end slow | there is also cubic-bezier (online tool (cubic-bezier.com))*/
+}
+
+#blue_block {
+    width: 14rem;
+    height: 10rem;
+    background-color: blue;
+    margin-bottom: 1rem;
+
+    animation-name: flyby;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    /* reverse animation */
+    animation-direction: reverse; /* alternate = back and forth */
+}
+
+/* animation shorthand */
+#purple_block {
+    width: 14rem;
+    height: 10rem;
+    background-color: purple;
+
+    animation: wind 20s linear infinite reverse; /* first is animation-name, duration, delay, timing-function, iteration count, direction, fill-mode*/
+}
+
+/* keyframes */
+
+@keyframes goRight {
+    from{ transform: translateX(0);}
+    to{transform: translateX(500px);}
+}
+
+@keyframes flyby {
+    from{transform: translateX(-400px);}
+    to{transform: translateX(2300px);}
+}
+
+@keyframes wind {
+    from{transform: translateX(-14rem);}
+    to{transform: translateX(100%);}
+}
+
+/* chained animation */
+@keyframes jump {
+    0%{top: 0;}
+    50%{top: -40px;}
+    100%{top: 0;}
+}
